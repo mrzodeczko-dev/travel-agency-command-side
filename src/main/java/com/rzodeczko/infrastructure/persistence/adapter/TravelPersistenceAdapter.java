@@ -56,7 +56,6 @@ public class TravelPersistenceAdapter implements TravelRepository {
     @Override
     public void reserveAvailability(Long hotelId, int capacity, LocalDate start, LocalDate end) {
 
-
         Map<LocalDate, DailyAvailabilityEntity> existingSlots = jpaDailyAvailabilityRepository
                 .findAndLockByHotelAndDateRange(hotelId, start, end)
                 .stream()
@@ -71,9 +70,6 @@ public class TravelPersistenceAdapter implements TravelRepository {
         jpaDailyAvailabilityRepository.saveAll(toSave);
     }
 
-    /**
-     * Znajduje istniejacy slot lub tworzy nowy, waliduje pojemnosc i rezerwuje jedno miejsce
-     */
     private DailyAvailabilityEntity reserveSlot(
             Map<LocalDate, DailyAvailabilityEntity> existingSlots,
             Long hotelId,
