@@ -46,7 +46,6 @@ public class OutboxScheduler {
                 jpaOutboxRepository.delete(entry);
             } catch (Exception e) {
                 handleFailure(entry, e);
-                break;
             }
         }
     }

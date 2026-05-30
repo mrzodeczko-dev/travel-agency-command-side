@@ -16,6 +16,6 @@ public record ErrorResponseDto(
     }
 
     public ErrorResponseDto(String message, Map<String, String> validationErrors) {
-        this(message, LocalDateTime.now(), null);
+        this(message, LocalDateTime.now(), validationErrors);
     }
 }
